@@ -1,6 +1,6 @@
 <template>
     <div>
-      <p>Contact us via this page.</p>
+      <p>Contact me via this page.</p>
     </div>
   </template>
   

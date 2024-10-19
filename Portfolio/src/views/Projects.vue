@@ -1,12 +1,17 @@
 <template>
     <div>
-      <p>Check out some of what I've worked on before.</p>
+      <header>Past Projects</header>
     </div>
   </template>
   
   <script>
   </script>
   
-  <style scoped>
+  <style>
+  .header {
+    position: fixed;
+    color: white;
+    text-align: center;
+  }
   </style>
   

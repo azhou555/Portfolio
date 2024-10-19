@@ -7,13 +7,8 @@ export default {
 
 <template>
   <NavBar />
-  <div class="router-view">
-    <router-view />
-  </div>
+  <router-view />
 </template>
 
 <style scoped>
-.router-view {
-  padding-top: 80px;
-}
 </style>
