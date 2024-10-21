@@ -9,7 +9,7 @@
         <router-link to="/contact" exact-active-class="active">Contact</router-link>
         <div>Alec Zhou</div>
     </div>
-</template>>
+</template>
 <style scoped>
 @import '../assets/base.css';
 
