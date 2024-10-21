@@ -28,7 +28,7 @@
     font-size: 17px;
 }
 .topnav a.active {
-    background-color: var(--vt-c-green-bright);
+    background-color: mediumseagreen;
     color: white;
 }
 .topnav a:hover {
