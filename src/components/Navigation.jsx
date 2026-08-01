@@ -1,31 +1,26 @@
 import React from 'react'
 
-const Navigation = ({ activeSection, setActiveSection }) => {
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' }
-  ]
+const navItems = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' }
+]
 
+const Navigation = () => {
   return (
     <nav className="navigation">
       <div className="nav-container">
         <div className="nav-logo">
-          <button onClick={() => setActiveSection('home')}>
-            Alec Zhou
-          </button>
+          <a href="#home">Alec Zhou</a>
         </div>
         <ul className="nav-menu">
           {navItems.map((item) => (
             <li key={item.id} className="nav-item">
-              <button
-                className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => setActiveSection(item.id)}
-              >
+              <a className="nav-link" href={`#${item.id}`}>
                 {item.label}
-              </button>
+              </a>
             </li>
           ))}
         </ul>

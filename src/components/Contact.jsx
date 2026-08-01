@@ -10,7 +10,7 @@ const Contact = () => {
   }
 
   return (
-    <section className="contact">
+    <section id="contact" className="contact">
       <div className="contact-container">
         <h2 className="section-title">Contact</h2>
         

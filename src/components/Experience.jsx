@@ -2,12 +2,12 @@ import React from "react";
 import {
   professionalExperience,
   leadershipExperience,
-} from "@/data/experiences";
+} from "../data/experiences";
 const Experience = () => {
   (professionalExperience, leadershipExperience);
 
   return (
-    <section className="experience">
+    <section id="experience" className="experience">
       <div className="experience-container">
         <h2 className="section-title">Experience</h2>
 
