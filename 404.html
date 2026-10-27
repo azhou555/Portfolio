@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Alec Zhou - Portfolio</title>
+    <script>
+      var l = window.location;
+      var path = l.pathname.replace(/^\/+|\/+$/g, '');
+      if (path === 'Portfolio') {
+        l.replace(l.protocol + '//' + l.host + '/Portfolio/');
+      } else {
+        l.replace(l.protocol + '//' + l.host + '/');
+      }
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="./">Alec Zhou's Portfolio</a>...</p>
+  </body>
+</html>
