@@ -37,16 +37,18 @@ const Projects = () => {
               </div>
 
               <div className="project-actions">
-                {project.deployLink ? (
+                {project.deployLink && (
                   <a
                     href={project.deployLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-link"
                   >
-                    View Live
+                    {project.deployLabel || "View Live"}
                   </a>
-                ) : project.repoLink ? (
+                )}
+                {project.deployLink && project.repoLink && " · "}
+                {project.repoLink && (
                   <a
                     href={project.repoLink}
                     target="_blank"
@@ -55,7 +57,8 @@ const Projects = () => {
                   >
                     View on GitHub
                   </a>
-                ) : (
+                )}
+                {!project.deployLink && !project.repoLink && (
                   <span className="project-link-placeholder">
                     {project.isDownload
                       ? "Download Coming Soon"

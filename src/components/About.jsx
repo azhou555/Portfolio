@@ -3,55 +3,51 @@ import React from 'react'
 const About = () => {
   const mathCourses = [
     'Advanced Calculus',
-    'Discrete Structures', 
+    'Discrete Structures',
     'Theory and Methods of Statistics',
     'Linear Algebra'
   ]
 
   const csCourses = [
-    'Computer and Network Security',
-    'Web Application Development',
     'Algorithms',
-    'Organization of Programming Languages',
-    'Computer Graphics',
-    'Software Design',
-    'Intro to AI',
-    'Introduction to Computer Systems',
-    'Object Oriented Programming'
+    'Operating Systems',
+    'Distributed Systems',
+    'Database Design',
+    'Compilers',
+    'Deep Learning'
   ]
 
   const languages = [
-    'Java', 'Python', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 
-    'C', 'C++', 'OCaml', 'SQL', 'x86 Assembly'
+    'Java', 'Python', 'TypeScript', 'JavaScript', 'Rust',
+    'C', 'C++', 'SQL', 'HTML', 'CSS'
   ]
 
   const tools = [
-    'Claude Code', 'Spring Boot', 'Spring', 'Docker', 'AWS', 'Jupyter Notebook', 
-    'RStudio', 'Postman', 'React', 'Next.js', 'Pandas', 'NumPy', 'PyQt6', 
-    'Langchain', 'JavaFX', 'JUnit', 'Power Automate', 'Power BI', 'Microsoft Suite'
+    'Spring Boot', 'FastAPI', 'React', 'Next.js', 'Node.js', 'LangChain',
+    'PyTorch', 'Pandas', 'Azure', 'AWS', 'Docker', 'Git', 'CI/CD'
   ]
 
   const databases = [
-    'SQL', 'MySQL', 'PostgreSQL', 'SQLite', 'MongoDB'
+    'MySQL', 'PostgreSQL', 'SQLite', 'MongoDB', 'Redis'
   ]
 
   const operatingSystems = [
-    'Linux', 'Unix', 'Windows'
+    'Linux', 'Unix'
   ]
 
   return (
     <section id="about" className="about">
       <div className="about-container">
         <h2 className="section-title">About Me</h2>
-        
+
         <div className="about-grid">
           <div className="about-card">
             <h3>Education</h3>
             <div className="education-info">
               <h4>University of Maryland - College Park</h4>
               <p className="degree">Computer Science & Mathematics: Applied Math Track</p>
-              <p className="gpa">GPA: 3.87/4.0</p>
-              <p className="graduation">Expected Graduation: Spring 2027</p>
+              <p className="gpa">GPA: 3.88/4.0</p>
+              <p className="graduation">Expected Graduation: May 2027</p>
             </div>
           </div>
 
@@ -88,16 +84,16 @@ const About = () => {
                   ))}
                 </div>
               </div>
-              
+
               <div className="skill-category">
-                <h4>Tools & Frameworks</h4>
+                <h4>Frameworks, Cloud & Tools</h4>
                 <div className="skill-tags">
                   {tools.map((tool, index) => (
                     <span key={index} className="skill-tag">{tool}</span>
                   ))}
                 </div>
               </div>
-              
+
               <div className="skill-category">
                 <h4>Databases</h4>
                 <div className="skill-tags">
@@ -106,7 +102,7 @@ const About = () => {
                   ))}
                 </div>
               </div>
-              
+
               <div className="skill-category">
                 <h4>Operating Systems</h4>
                 <div className="skill-tags">

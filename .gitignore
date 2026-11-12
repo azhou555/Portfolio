@@ -15,3 +15,10 @@ dist/
 # Temporary folders
 tmp/
 temp/
+
+# OS files
+.DS_Store
+
+# Local PDFs (published copies live in public/; transcript is deployed but not tracked)
+/*.pdf
+public/AlecZhou_Unofficial_Transcript.pdf

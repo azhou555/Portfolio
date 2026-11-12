@@ -113,6 +113,7 @@ section:last-of-type {
 
 .hero-links {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--spacing-md);
 }
 
@@ -316,6 +317,130 @@ section:last-of-type {
   color: var(--color-muted);
   text-decoration: none;
   font-style: italic;
+}
+
+/* Notes */
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.note-preview {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-md);
+}
+
+.note-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.note-preview-title {
+  font-size: 1.2rem;
+}
+
+.note-preview-title a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.note-preview-title a:hover {
+  text-decoration: underline;
+}
+
+.note-preview-date {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.note-preview-excerpt {
+  color: var(--color-muted);
+  margin: var(--spacing-xs) 0 var(--spacing-sm);
+}
+
+.note-read-link {
+  color: var(--color-text);
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+/* Note post (full markdown view) */
+.note-post {
+  padding: var(--spacing-2xl) 0;
+  max-width: 700px;
+}
+
+.note-back-link {
+  display: inline-block;
+  color: var(--color-text);
+  text-decoration: underline;
+  margin-bottom: var(--spacing-lg);
+}
+
+.note-post-title {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.note-post-date {
+  color: var(--color-muted);
+  margin-bottom: var(--spacing-xl);
+}
+
+.note-post-body {
+  line-height: 1.7;
+}
+
+.note-post-body h1,
+.note-post-body h2,
+.note-post-body h3 {
+  margin: var(--spacing-lg) 0 var(--spacing-sm);
+}
+
+.note-post-body p,
+.note-post-body ul,
+.note-post-body ol,
+.note-post-body pre,
+.note-post-body blockquote {
+  margin-bottom: var(--spacing-md);
+}
+
+.note-post-body ul,
+.note-post-body ol {
+  padding-left: var(--spacing-lg);
+}
+
+.note-post-body a {
+  color: var(--color-text);
+}
+
+.note-post-body code {
+  font-family: var(--font-family-mono);
+  border: 1px solid var(--color-border);
+  padding: 0.1rem 0.3rem;
+  font-size: 0.9em;
+}
+
+.note-post-body pre {
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-sm);
+  overflow-x: auto;
+}
+
+.note-post-body pre code {
+  border: none;
+  padding: 0;
+}
+
+.note-post-body blockquote {
+  border-left: 2px solid var(--color-border);
+  padding-left: var(--spacing-sm);
+  color: var(--color-muted);
 }
 
 /* Contact */

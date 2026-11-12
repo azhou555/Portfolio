@@ -34,6 +34,22 @@ const Hero = () => {
             >
               Email
             </a>
+            <a
+              href="./AlecZhou_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-link"
+            >
+              Resume
+            </a>
+            <a
+              href="./AlecZhou_Unofficial_Transcript.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-link"
+            >
+              Transcript
+            </a>
           </div>
         </div>
       </div>

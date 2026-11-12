@@ -3,14 +3,13 @@ export const professionalExperience = [
     company: "M&T Bank",
     location: "Buffalo, NY",
     position: "Software Engineer Intern",
-    duration: "June 2026 – Present",
+    duration: "June 2026 – August 2026",
     responsibilities: [
-      "Developed and tested REST API endpoints in Spring Boot for core banking services powering customer login, account/card info, checks, statements, contacts, and more",
-      "Upgraded legacy services to newer Spring Boot versions and remediated dependency-audit vulnerabilities; built custom regex-based PII masking for logs and third-party logging tools across all layers",
-      "Contributed to a live production codebase on an 11-person Agile team -- backlog tickets, break/fix issues, and API gateway routing",
-      "Actively investigated latency errors to report findings and propose solutions",
-      "Adhered to strict API contracts with downstream and upstream services to maintain high availability",
-      "Implemented accurate logging and filtering across all microservices",
+      "Delivered 15+ merged PRs across 15+ core-banking Java Spring Boot microservices, carrying REST API and SQL work from technical discovery and design documentation through implementation and testing",
+      "Prepared 15+ services for an Azure migration by improving logging accuracy and PII masking across application and third-party logs",
+      "Designed and implemented an end-to-end Spring Boot API-key service with generation, validation, rotation, and revocation backed by PostgreSQL and secure hashing and encryption",
+      "Implemented positive and negative caching, secret handling, failure behavior, and integration tests for a critical request path designed to support millions of daily requests",
+      "Upgraded legacy services to newer Spring Boot versions and remediated dependency-audit vulnerabilities",
     ],
   },
   {
@@ -19,10 +18,9 @@ export const professionalExperience = [
     position: "AI and Process Automation Intern",
     duration: "June 2025 – August 2025",
     responsibilities: [
-      "Designed and implemented solutions utilizing AI models and frameworks including Langchain",
-      "Automated internal processes such as invoice processing and interactions with external APIs using AI methodologies",
-      "Researched, proposed, developed AI agents and cloud solutions on Azure and AWS",
-      "Developed internal-facing applications to complement automations and enhance user experience",
+      "Built a Python/LangChain RAG system over internal company data with a chat interface supporting semantic retrieval and fuzzy search",
+      "Integrated external APIs into AI-assisted workflows for contract drafting and data processing",
+      "Presented AI and automation solutions to the CEO and senior leadership, translating technical capabilities into business use cases",
     ],
   },
   {
@@ -31,23 +29,20 @@ export const professionalExperience = [
     position: "Software Engineer Intern",
     duration: "July 2023 – August 2023",
     responsibilities: [
-      "Implemented and maintained a professional website and integrated MySQL database with PHP, JavaScript & Laravel",
-      "Implemented an optimized script to parse and reformat large Excel datasheets using Python and Pandas library",
-      "Conducted comprehensive functional and integration testing, leading to the successful launch of the application",
-      "Participated in code reviews under the guidance of a mentor, incorporating feedback to enhance code quality",
-      "Utilized GitHub and Agile methodology for collaborative project management and source control",
+      "Enhanced an internal asset-management application using PHP, Laravel, and MySQL",
+      "Built and tested Python/Pandas pipelines to sanitize and transform operational data for integration with the asset-management application",
     ],
   },
 ];
 
 export const leadershipExperience = [
   {
-    organization: "King Farm Tennis Team/Private Coaching",
+    organization: "King Farm Tennis",
     location: "Rockville & Bethesda, MD",
-    position: "Founder and Coach",
-    duration: "2019-2025",
+    position: "Founder & Coach",
+    duration: "2019 – 2025",
     responsibilities: [
-      "Founded a tennis organization, taught lessons, and oversaw 20+ students aged 5-50 in group and private settings",
+      "Founded a program serving 20+ students through group and private instruction",
     ],
   },
 ];
