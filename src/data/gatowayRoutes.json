@@ -1,0 +1,354 @@
+{
+ "bank_size": 102,
+ "bar": 0.7,
+ "floor": 0.3,
+ "min_obs": 2,
+ "rungs": [
+  {
+   "name": "gemma-small",
+   "params": 12.0
+  },
+  {
+   "name": "qwen3-small",
+   "params": 27.0
+  },
+  {
+   "name": "gpt-oss",
+   "params": 120.0
+  },
+  {
+   "name": "qwen3",
+   "params": 180.0
+  },
+  {
+   "name": "minimax-m2",
+   "params": 230.0
+  },
+  {
+   "name": "deepseek-v4-flash",
+   "params": 304.0
+  },
+  {
+   "name": "glm-5",
+   "params": 753.0
+  },
+  {
+   "name": "kimi",
+   "params": 1000.0
+  }
+ ],
+ "prompts": [
+  {
+   "task_id": "capital_france",
+   "prompt": "What is the capital of France?",
+   "rung": "gemma-small",
+   "low_confidence": false,
+   "neighbors": [
+    {
+     "prompt": "Name Portugal's capital city.",
+     "similarity": 0.511,
+     "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Which city serves as Kenya's national capital?",
+     "similarity": 0.327,
+     "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Identify the capital city of Peru.",
+     "similarity": 0.273,
+     "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "What Celsius temperature corresponds to a reading of 14 F?",
+     "similarity": 0.21,
+     "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "A thermometer reads 86 F. Express that temperature in Celsius.",
+     "similarity": 0.14,
+     "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   ]
+  },
+  {
+   "task_id": "sql_query",
+   "prompt": "Write a SQL query to find the second-highest salary from an employees table.",
+   "rung": "qwen3-small",
+   "low_confidence": false,
+   "neighbors": [
+    {
+     "prompt": "Return the two largest distinct salary amounts from employees(id, name, salary), in descending order, using SQL. Return the available amounts when fewer than two exist.",
+     "similarity": 0.813,
+     "scores": [
+      1.0,
+      1.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Query employees(id, name, salary) for its third-largest distinct salary. Ignore duplicate amounts; return no rows if fewer than three distinct amounts exist. Return exactly one column named salary containing the amount, not employee records. Use a read-only SQL SELECT.",
+     "similarity": 0.759,
+     "scores": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Using employees(id, name, salary), return the maximum salary as one SQL scalar aggregate. An empty table should return NULL.",
+     "similarity": 0.676,
+     "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Crate A weighs 5 kg, value 9; B weighs 3, value 7; C weighs 2, value 4; D weighs 4, value 8. The van holds at most 7 kg and each crate ships at most once. Maximize total value. Return {\"jobs\": sorted array of letters, \"value\": integer}. Respond with only a JSON object (no prose, no markdown fence).",
+     "similarity": 0.321,
+     "scores": [
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Patient A needs 4 minutes for benefit 7; B needs 6 for 10; C needs 3 for 6; D needs 5 for 8. The slot is 9 minutes and each patient is seen at most once. Maximize total benefit. Return {\"jobs\": sorted array of letters, \"value\": integer}. Respond with only a JSON object (no prose, no markdown fence).",
+     "similarity": 0.32,
+     "scores": [
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   ]
+  },
+  {
+   "task_id": "longest_unique",
+   "prompt": "Export function longestUnique(text: string): number. Return the longest contiguous substring length with no repeated Unicode code points. Count code points, not UTF-16 code units. Empty input returns 0.\nReturn a single fenced typescript code block, with no dependencies.",
+   "rung": "gpt-oss",
+   "low_confidence": false,
+   "neighbors": [
+    {
+     "prompt": "Export function maxWindowSum(nums: number[], k: number): number | null. Return the largest sum of exactly k consecutive entries. Return null when k<=0 or k>nums.length. All inputs are integers and sums fit safely in a number.\nReturn a single fenced typescript code block, with no dependencies.",
+     "similarity": 0.597,
+     "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Export function minWindowLength(nums: number[], target: number): number. All nums and target are positive integers. Return the shortest nonempty contiguous subarray length whose sum is at least target, or 0 if none exists.\nReturn a single fenced typescript code block, with no dependencies.",
+     "similarity": 0.517,
+     "scores": [
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Export function evaluateRpn(tokens: string[]): number. Evaluate a valid nonempty reverse Polish expression using integer tokens and +,-,*,/. Division truncates toward zero; divisors are nonzero. Results fit safely in a number.\nReturn a single fenced typescript code block, with no dependencies.",
+     "similarity": 0.517,
+     "scores": [
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Export class MinStack with constructor(), push(value: number): void, pop(): number | undefined, top(): number | undefined, getMin(): number | undefined. Maintain a stack and its minimum in O(1) per operation. Empty queries/pop return undefined. Duplicated minima must work.\nReturn a single fenced typescript code block, with no dependencies.",
+     "similarity": 0.448,
+     "scores": [
+      1.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Export class TimeMap with constructor(), set(key: string, value: string, timestamp: number): void and get(key: string, timestamp: number): string | undefined. Set timestamps are nondecreasing per key. Get returns the value at the largest timestamp <= query, or undefined. A repeated set at the same timestamp replaces its value. Reads may arrive in any time order.\nReturn a single fenced typescript code block, with no dependencies.",
+     "similarity": 0.428,
+     "scores": [
+      1.0,
+      0.0,
+      1.0,
+      1.0,
+      0.0,
+      1.0,
+      0.0,
+      1.0
+     ]
+    }
+   ]
+  },
+  {
+   "task_id": "code_fix",
+   "prompt": "Fix the off-by-one bug in: for i in range(1, n): print(arr[i])",
+   "rung": "glm-5",
+   "low_confidence": false,
+   "neighbors": [
+    {
+     "prompt": "Given arr and n=len(arr), repair this loop so it prints each element except the last, one per line: for i in range(n): print(arr[i]). Use one for loop; empty and singleton arrays should print nothing.",
+     "similarity": 0.778,
+     "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Print each zero-based index followed by its item from arr using print(index, item). Fix the indexing in for i in range(1, n+1): print(i, arr[i]), where n=len(arr). Return one for loop, including correct behavior for an empty array.",
+     "similarity": 0.763,
+     "scores": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0
+     ]
+    },
+    {
+     "prompt": "For arr with n=len(arr), print all items after the first, one per line. The current loop starts at index 2 and skips too much. Supply a single corrected for loop that also works for empty or singleton arrays.",
+     "similarity": 0.723,
+     "scores": [
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Implement first_unique(text: str) -> int. Return the index of the first character occurring exactly once, or -1 if absent. Matching is case-sensitive.\nReturn a single fenced python code block, with no dependencies.",
+     "similarity": 0.299,
+     "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "prompt": "Implement meeting_rooms(meetings: list[list[int]]) -> int. Return the minimum simultaneous rooms for half-open meetings [start,end), with start<end. A room finishing at time t can serve a meeting starting at t. Input is unsorted.\nReturn a single fenced python code block, with no dependencies.",
+     "similarity": 0.291,
+     "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   ]
+  }
+ ]
+}

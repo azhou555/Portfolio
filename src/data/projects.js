@@ -1,5 +1,19 @@
 export const projects = [
   {
+    title: "tagteam",
+    status: "October 2026 - Present",
+    description:
+      "Cross-agent review hooks for Claude Code, Codex, Copilot CLI, and Antigravity",
+    technologies: ["Python", "Agent Hooks", "Git", "uv", "SwiftBar"],
+    features: [
+      "When one coding agent ends a turn that changed code, a plan, or a design doc, a different agent reviews it read-only",
+      "Blocking reviews for large, high-risk, and design changes; small changes are reviewed in the background as suggestions",
+      "Works with Claude Code, Codex, Copilot CLI, Antigravity, and OpenCode, all running locally on your own accounts",
+      "Hooks fail open and merge into existing agent configs with backups, so a broken tagteam never blocks an agent",
+    ],
+    repoLink: "https://github.com/azhou555/tagteam",
+  },
+  {
     title: "gatoway",
     status: "July 2026 - Present",
     description:

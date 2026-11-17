@@ -3,14 +3,18 @@ import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import About from './components/About'
 import Experience from './components/Experience'
+import Featured from './components/Featured'
 import Projects from './components/Projects'
 import Notes from './components/Notes'
 import NotePost from './components/NotePost'
 import Contact from './components/Contact'
+import { jumpTo, startSmoothScroll } from './lib/smoothScroll'
 import './assets/main.css'
 
 function App() {
   const [hash, setHash] = useState(window.location.hash)
+
+  useEffect(() => startSmoothScroll(), [])
 
   useEffect(() => {
     const onHashChange = () => setHash(window.location.hash)
@@ -27,9 +31,9 @@ function App() {
   useEffect(() => {
     if (isPost && !wasPost.current) {
       savedScroll.current = window.scrollY
-      window.scrollTo(0, 0)
+      jumpTo(0)
     } else if (!isPost && wasPost.current) {
-      window.scrollTo(0, savedScroll.current)
+      jumpTo(savedScroll.current)
     }
     wasPost.current = isPost
   }, [isPost])
@@ -45,6 +49,7 @@ function App() {
             <Hero />
             <About />
             <Experience />
+            <Featured />
             <Projects />
             <Notes />
             <Contact />

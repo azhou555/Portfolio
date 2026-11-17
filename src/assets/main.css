@@ -34,7 +34,7 @@ main {
 }
 
 .nav-container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: var(--spacing-sm) var(--spacing-md);
   display: flex;
@@ -53,7 +53,9 @@ main {
 
 .nav-menu {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
+  padding: 0;
   gap: var(--spacing-md);
 }
 
@@ -94,11 +96,45 @@ section:last-of-type {
   padding-top: var(--spacing-xl);
 }
 
+/* The banner replaces the h1 visually; the h1 stays for screen readers and SEO. */
 .hero-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: var(--spacing-xs);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
+
+/* 69-column banner; font size scales so it never overflows on phones. */
+.hero-banner {
+  font-family: inherit;
+  font-size: clamp(5px, 1.85vw, 13px);
+  line-height: 1.15;
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+}
+
+.cursor {
+  margin-left: 0.25ch;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; }
+}
+
+/* Terminal-style bracketed links */
+.nav-link,
+.hero-link { white-space: nowrap; }
+.nav-link::before,
+.hero-link::before { content: '[ '; }
+.nav-link::after,
+.hero-link::after { content: ' ]'; }
 
 .hero-subtitle {
   font-size: 1.2rem;
@@ -119,7 +155,14 @@ section:last-of-type {
 
 .hero-link {
   color: var(--color-text);
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.hero-link:hover {
+  text-decoration: none;
+  background: var(--color-text);
+  color: var(--color-background);
 }
 
 /* About */
@@ -510,5 +553,842 @@ section:last-of-type {
   .contact-item {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* Featured projects: a write-up on the left, a visual on the right. Nothing
+   is pinned. The right column carries one dashed spine from the first visual
+   to the last, so each project flows into the next. */
+.App {
+  overflow-x: clip;
+}
+
+/* code.storage-style flow: no pinned headings over the visuals. */
+.featured .section-title {
+  position: static;
+}
+
+.featured {
+  --featured-width: min(1200px, calc(100vw - 2 * var(--spacing-md)));
+  width: var(--featured-width);
+  margin-left: calc(50% - var(--featured-width) / 2);
+  padding-top: var(--spacing-2xl);
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--spacing-xl);
+  align-items: center;
+  border-bottom: none;
+  padding: 0;
+}
+
+.feature-text {
+  padding: var(--spacing-2xl) 0;
+}
+
+.feature-text p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.9;
+}
+
+.feature-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--spacing-lg);
+}
+
+.feature-points {
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--spacing-lg);
+}
+
+.feature-points li {
+  padding-left: 2ch;
+  text-indent: -2ch;
+  line-height: 1.9;
+}
+
+.feature-points li::before {
+  content: '* ';
+  color: var(--color-muted);
+}
+
+/* The spine: a dashed line down the middle of the visual column. Each
+   visual's frame sits on top of it, so the line reads as one connector that
+   enters every frame from above and leaves from below. */
+.feature-visual {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-visual::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 1px dashed var(--color-muted);
+}
+
+.scene {
+  position: relative;
+  width: min(100%, 600px);
+  aspect-ratio: 1;
+}
+
+.scene canvas {
+  position: relative;
+}
+
+.scene-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.scene-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-text);
+}
+
+/* Inverted callout with a pointer tail, the visuals' only words. */
+.scene-label.is-callout {
+  background: var(--color-text);
+  color: var(--color-background);
+  padding: 0.55em 0.9em;
+  font-weight: 700;
+}
+
+.scene-label.is-callout::after {
+  content: '';
+  position: absolute;
+  right: 1.2em;
+  bottom: -6px;
+  border: 6px solid transparent;
+  border-bottom: 0;
+  border-top-color: var(--color-text);
+}
+
+.feature-frame {
+  position: relative;
+  width: min(100%, 600px);
+  aspect-ratio: 1;
+  background: var(--color-background);
+  border: 1px solid var(--color-text);
+}
+
+@media (max-width: 800px) {
+  .feature {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .feature-visual {
+    order: -1;
+    padding-top: var(--spacing-xl);
+  }
+
+  .feature-text {
+    padding-top: var(--spacing-lg);
+  }
+
+  .scene-label {
+    font-size: 0.6rem;
+  }
+}
+
+/* Phones: keep the sticky nav to two rows by letting the menu scroll sideways. */
+@media (max-width: 600px) {
+  .nav-menu {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    max-width: 100%;
+  }
+}
+
+/* tagteam: the description, reviewed. The section is tall; both columns pin
+   while it scrolls, and the dashed spine keeps running behind the sheet. */
+.feature.pinned {
+  height: 340vh;
+  align-items: stretch;
+}
+
+.pin-col {
+  position: relative;
+}
+
+.pin-col.feature-visual {
+  display: block;
+}
+
+.pin-sticky {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--spacing-xl));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - var(--nav-height) - 2 * var(--spacing-xl));
+}
+
+.review-intro p {
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.9;
+}
+
+.review-rail {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-lg);
+  border-left: 1px dashed var(--color-muted);
+}
+
+.review-rail button {
+  font: inherit;
+  color: var(--color-muted);
+  background: none;
+  border: 0;
+  padding: 0.3em 0.7em 0.3em 1.2em;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+}
+
+.review-rail button::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin-top: -3.5px;
+  border: 1px solid var(--color-muted);
+  background: var(--color-background);
+}
+
+.review-rail li.is-done button {
+  color: var(--color-text);
+}
+
+.review-rail li.is-done button::before {
+  background: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.review-rail li.is-active button {
+  color: var(--color-background);
+  background: var(--color-text);
+}
+
+.review-rail li.is-active button::before {
+  background: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.review-rail button:hover {
+  color: var(--color-text);
+}
+
+.review-rail-num {
+  opacity: 0.6;
+}
+
+/* The sheet: a hairline document with registration ticks at its corners.
+   Red is reserved for the one finding; everything else is monochrome. */
+.sheet {
+  --flag: #e5484d;
+  position: relative;
+  width: min(100%, 600px);
+  margin: 0 auto;
+  background: var(--color-background);
+  border: 1px solid var(--color-text);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.sheet::before {
+  --c: var(--color-muted);
+  --t: 12px;
+  content: '';
+  position: absolute;
+  inset: -9px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--c), var(--c)) left top / var(--t) 1px,
+    linear-gradient(var(--c), var(--c)) left top / 1px var(--t),
+    linear-gradient(var(--c), var(--c)) right top / var(--t) 1px,
+    linear-gradient(var(--c), var(--c)) right top / 1px var(--t),
+    linear-gradient(var(--c), var(--c)) left bottom / var(--t) 1px,
+    linear-gradient(var(--c), var(--c)) left bottom / 1px var(--t),
+    linear-gradient(var(--c), var(--c)) right bottom / var(--t) 1px,
+    linear-gradient(var(--c), var(--c)) right bottom / 1px var(--t);
+  background-repeat: no-repeat;
+}
+
+.sheet-head,
+.sheet-foot {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sheet-head {
+  background: var(--color-text);
+  color: var(--color-background);
+  font-weight: 700;
+}
+
+/* The hook: a bar sweeping across the header as the turn is handed off. */
+.sheet-hook {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-background);
+  transform-origin: left;
+}
+
+.sheet-foot {
+  border-top: 1px solid var(--color-text);
+  color: var(--color-muted);
+}
+
+.sheet-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0.9rem 0;
+}
+
+.sheet-line {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.4rem 1.2rem minmax(0, 1fr) 2rem;
+  align-items: center;
+  min-height: 1.9rem;
+  white-space: pre;
+  transition: background-color 0.15s;
+}
+
+.sheet-line.is-pending {
+  opacity: 0;
+}
+
+.sheet-num {
+  text-align: right;
+  padding-right: 0.8rem;
+  color: var(--color-muted);
+  font-size: 0.7rem;
+}
+
+.sheet-sign {
+  color: var(--color-muted);
+}
+
+.sheet-text {
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+/* The reviewer's read head: an inverted bar on the line being read. */
+.sheet-line.is-scanning {
+  background: var(--color-text);
+  color: var(--color-background);
+}
+
+.sheet-line.is-scanning .sheet-num,
+.sheet-line.is-scanning .sheet-sign {
+  color: var(--color-background);
+}
+
+.sheet-line.is-flagged .sheet-text {
+  color: var(--flag);
+  text-decoration: underline wavy var(--flag);
+  text-underline-offset: 4px;
+}
+
+/* Strike-through drawn left to right as the author rejects the old line. */
+.sheet-strike {
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / calc(var(--strike, 0) * 100%) 1.5px;
+}
+
+.sheet-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 1px;
+  vertical-align: -0.15em;
+  background: currentColor;
+  animation: blink 1s steps(1) infinite;
+}
+
+.sheet-mark {
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.sheet-mark.is-red {
+  color: var(--flag);
+}
+
+/* Signed off: the reviewer's pass runs down the gutter, line by line. */
+.sheet-line.is-signed .sheet-mark,
+.sheet-line.is-signed .sheet-num {
+  color: var(--color-text);
+}
+
+/* The review thread: a row that opens under the flagged line and pushes the
+   lines below it down, like an inline code-review comment. */
+.sheet-thread {
+  grid-column: 3 / 5;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+  white-space: normal;
+}
+
+.sheet-thread.is-open {
+  grid-template-rows: 1fr;
+}
+
+.sheet-thread > .sheet-note {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.sheet-thread.is-open > .sheet-note {
+  margin: 0.4rem 2rem 0.5rem 0;
+  padding: 0.55rem 0.7rem;
+  line-height: 1.5;
+  font-size: 0.7rem;
+  border: 1px solid var(--flag);
+  border-left-width: 3px;
+}
+
+.sheet-note b {
+  color: var(--flag);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 0.4em;
+}
+
+.sheet-thread.is-resolved > .sheet-note {
+  color: var(--color-muted);
+  border-color: var(--color-muted);
+}
+
+.sheet-thread.is-resolved .sheet-note b {
+  color: var(--color-muted);
+}
+
+/* A sheet's outcome: hangs off its bottom edge, on the spine. */
+.outcome {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  pointer-events: none;
+}
+
+.outcome-wire {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 44px;
+  background: var(--color-text);
+  transform-origin: top;
+}
+
+.outcome-node {
+  position: absolute;
+  left: -5px;
+  top: 44px;
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--color-text);
+  border-radius: 50%;
+  background: var(--color-background);
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.2s, transform 0.25s, box-shadow 0.25s;
+}
+
+.outcome-node.is-on {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: inset 0 0 0 2px var(--color-background), inset 0 0 0 6px var(--color-text);
+}
+
+.outcome-callout {
+  position: absolute;
+  left: 22px;
+  top: 49.5px;
+  transform: translateY(-50%);
+  padding: 0.55em 0.9em;
+  background: var(--color-text);
+  color: var(--color-background);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.outcome-callout::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  margin-top: -6px;
+  border: 6px solid transparent;
+  border-left: 0;
+  border-right-color: var(--color-text);
+}
+
+/* gatoway: a request, routed. Same sheet as tagteam. The table is the
+   router's evidence: rows are the nearest past requests, columns the rungs
+   from cheapest to largest. The scan walks the columns left to right and the
+   first column whose mean clears the bar inverts. Monochrome throughout. */
+.route-note {
+  color: var(--color-muted);
+}
+
+.route-picks {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-bottom: 1px solid var(--color-text);
+}
+
+.route-picks button {
+  font: inherit;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  background: none;
+  border: 0;
+  border-left: 1px solid var(--color-text);
+  padding: 0.7rem 0.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.route-picks button:first-child {
+  border-left: 0;
+}
+
+.route-picks button:hover {
+  text-decoration: underline;
+}
+
+/* Inversion is reserved for the router's pick; the chosen request gets a
+   heavy underline instead. */
+.route-picks button[aria-pressed='true'] {
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--color-text);
+  text-decoration: none;
+}
+
+.route-pick-num {
+  opacity: 0.6;
+}
+
+.route-request {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px dashed var(--color-muted);
+  line-height: 1.6;
+  min-height: calc(3 * 1.6em + 1.8rem);
+}
+
+.route-request > span {
+  color: var(--color-muted);
+}
+
+.route-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: 0.6rem 0;
+}
+
+.route-col-sim {
+  width: 3.9rem;
+}
+
+.route-col-rung {
+  width: 2.3rem;
+}
+
+.route-table th,
+.route-table td {
+  padding: 0.45rem 0;
+  text-align: center;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.route-table thead th {
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+
+.route-table th:nth-child(2),
+.route-table td:nth-child(2) {
+  text-align: left;
+  padding-right: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.route-table thead th:nth-child(2),
+.route-table tfoot th {
+  text-transform: uppercase;
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+}
+
+.route-sim {
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.route-text > span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.route-table tbody tr {
+  transition: opacity 0.2s;
+}
+
+.route-table tbody tr.is-pending {
+  opacity: 0;
+}
+
+/* Under the similarity floor: still shown, no longer counted. */
+.route-table tbody tr.is-under {
+  opacity: 0.35;
+}
+
+.route-table tbody tr.is-under .route-text > span {
+  text-decoration: line-through;
+}
+
+.route-cell {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  vertical-align: middle;
+  border: 1px solid var(--color-muted);
+}
+
+.route-cell.is-pass {
+  background: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.route-table tfoot td,
+.route-table tfoot th {
+  border-top: 1px solid var(--color-text);
+  padding-top: 0.6rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.route-table tfoot td {
+  color: var(--color-muted);
+}
+
+/* The rung being checked: a hairline band down the column. */
+.route-table .is-scan {
+  background: color-mix(in srgb, var(--color-text) 10%, transparent);
+  color: var(--color-text);
+}
+
+/* The pick: the whole column inverts. */
+.route-table .is-pick {
+  background: var(--color-text);
+  color: var(--color-background);
+  font-weight: 700;
+}
+
+.route-table .is-pick .route-cell {
+  border-color: var(--color-background);
+}
+
+.route-table .is-pick .route-cell.is-pass {
+  background: var(--color-background);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .feature.pinned {
+    height: 300vh;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Phones: the write-up scrolls away normally; only the sheet pins. */
+  .pin-col:not(.feature-visual) .pin-sticky {
+    position: static;
+    min-height: 0;
+    padding-top: var(--spacing-xl);
+  }
+
+  .review-rail {
+    display: none;
+  }
+
+  .pin-col.feature-visual {
+    order: 0;
+    padding-top: 0;
+  }
+
+  .sheet {
+    font-size: 0.66rem;
+  }
+
+  .route-col-sim {
+    width: 3.1rem;
+  }
+
+  .route-col-rung {
+    width: 1.6rem;
+  }
+
+  .route-table thead th {
+    font-size: 0.625rem;
+    letter-spacing: 0;
+  }
+
+  .route-picks button {
+    font-size: 0.62rem;
+    padding: 0.7rem 0.25rem;
+  }
+
+  .route-pick-num {
+    display: none;
+  }
+
+  /* Room for the outcome callout, which hangs under the sheet. */
+  .sheet.route {
+    margin-bottom: 96px;
+  }
+
+  /* Narrow: the callout hangs centered under the node instead of beside it. */
+  .outcome-callout {
+    left: 0;
+    top: 68px;
+    transform: translateX(-50%);
+  }
+
+  .outcome-callout::before {
+    left: 50%;
+    top: -6px;
+    margin: 0 0 0 -6px;
+    border: 6px solid transparent;
+    border-top: 0;
+    border-bottom-color: var(--color-text);
+  }
+
+  .sheet-line {
+    grid-template-columns: 1.8rem 0.9rem minmax(0, 1fr) 1.4rem;
+    min-height: 1.6rem;
+  }
+
+  /* Narrow sheet: long lines wrap instead of clipping. */
+  .sheet-line {
+    white-space: pre-wrap;
+    align-items: start;
+    padding: 0.3rem 0;
+    line-height: 1.4;
+  }
+}
+
+/* Phones: each table row becomes two lines, the past request across the full
+   width, then its similarity and the eight rung cells. */
+@media (max-width: 520px) {
+  .route-table,
+  .route-table thead,
+  .route-table tbody,
+  .route-table tfoot {
+    display: block;
+  }
+
+  .route-table {
+    padding: 0 0.75rem;
+  }
+
+  .route-table colgroup {
+    display: none;
+  }
+
+  .route-table tr {
+    display: grid;
+    grid-template-columns: 3.1rem repeat(8, minmax(0, 1fr));
+  }
+
+  .route-table th:nth-child(2),
+  .route-table td:nth-child(2) {
+    grid-column: 1 / -1;
+    order: -1;
+    padding: 0.5rem 0 0.1rem;
+  }
+
+  .route-table thead th:nth-child(2) {
+    display: none;
+  }
+
+  .route-table tfoot td:first-child {
+    display: none;
+  }
+
+  .route-table tfoot th {
+    border-top: 1px solid var(--color-text);
+  }
+
+  .route-table tfoot td {
+    border-top: 0;
+    padding-top: 0.3rem;
+  }
+
+  .route-table tfoot td:nth-child(3) {
+    grid-column-start: 2;
+  }
+
+  .route .sheet-foot {
+    flex-direction: column;
+    gap: 0.4rem;
   }
 }

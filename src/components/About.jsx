@@ -1,39 +1,61 @@
-import React from 'react'
+import React from "react";
 
 const About = () => {
   const mathCourses = [
-    'Advanced Calculus',
-    'Discrete Structures',
-    'Theory and Methods of Statistics',
-    'Linear Algebra'
-  ]
+    "Advanced Calculus",
+    "Discrete Structures",
+    "Theory and Methods of Statistics",
+    "Linear Algebra",
+    "Mathematics of Finance",
+    "Computational Methods",
+    "Dynamics and Chaos",
+  ];
 
   const csCourses = [
-    'Algorithms',
-    'Operating Systems',
-    'Distributed Systems',
-    'Database Design',
-    'Compilers',
-    'Deep Learning'
-  ]
+    "Algorithms",
+    "Operating Systems",
+    "Distributed Systems",
+    "Database Design",
+    "Compilers",
+    "Deep Learning",
+    "Computer and Network Security",
+    "Networks",
+    "Computer Architecture",
+    "Software Development with GenAI",
+  ];
 
   const languages = [
-    'Java', 'Python', 'TypeScript', 'JavaScript', 'Rust',
-    'C', 'C++', 'SQL', 'HTML', 'CSS'
-  ]
+    "Java",
+    "Python",
+    "TypeScript",
+    "JavaScript",
+    "Rust",
+    "C",
+    "C++",
+    "SQL",
+    "HTML",
+    "CSS",
+  ];
 
   const tools = [
-    'Spring Boot', 'FastAPI', 'React', 'Next.js', 'Node.js', 'LangChain',
-    'PyTorch', 'Pandas', 'Azure', 'AWS', 'Docker', 'Git', 'CI/CD'
-  ]
+    "Spring Boot",
+    "FastAPI",
+    "React",
+    "Next.js",
+    "Node.js",
+    "LangChain",
+    "PyTorch",
+    "Pandas",
+    "Azure",
+    "AWS",
+    "Docker",
+    "Git",
+    "CI/CD",
+  ];
 
-  const databases = [
-    'MySQL', 'PostgreSQL', 'SQLite', 'MongoDB', 'Redis'
-  ]
+  const databases = ["MySQL", "PostgreSQL", "SQLite", "MongoDB", "Redis"];
 
-  const operatingSystems = [
-    'Linux', 'Unix'
-  ]
+  const operatingSystems = ["Linux", "Unix"];
 
   return (
     <section id="about" className="about">
@@ -45,7 +67,9 @@ const About = () => {
             <h3>Education</h3>
             <div className="education-info">
               <h4>University of Maryland - College Park</h4>
-              <p className="degree">Computer Science & Mathematics: Applied Math Track</p>
+              <p className="degree">
+                Computer Science & Mathematics: Applied Math Track
+              </p>
               <p className="gpa">GPA: 3.88/4.0</p>
               <p className="graduation">Expected Graduation: May 2027</p>
             </div>
@@ -80,7 +104,9 @@ const About = () => {
                 <h4>Languages</h4>
                 <div className="skill-tags">
                   {languages.map((lang, index) => (
-                    <span key={index} className="skill-tag">{lang}</span>
+                    <span key={index} className="skill-tag">
+                      {lang}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -89,7 +115,9 @@ const About = () => {
                 <h4>Frameworks, Cloud & Tools</h4>
                 <div className="skill-tags">
                   {tools.map((tool, index) => (
-                    <span key={index} className="skill-tag">{tool}</span>
+                    <span key={index} className="skill-tag">
+                      {tool}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -98,7 +126,9 @@ const About = () => {
                 <h4>Databases</h4>
                 <div className="skill-tags">
                   {databases.map((db, index) => (
-                    <span key={index} className="skill-tag">{db}</span>
+                    <span key={index} className="skill-tag">
+                      {db}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -107,7 +137,9 @@ const About = () => {
                 <h4>Operating Systems</h4>
                 <div className="skill-tags">
                   {operatingSystems.map((os, index) => (
-                    <span key={index} className="skill-tag">{os}</span>
+                    <span key={index} className="skill-tag">
+                      {os}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -116,7 +148,7 @@ const About = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default About
+export default About;

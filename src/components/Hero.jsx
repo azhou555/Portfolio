@@ -1,12 +1,23 @@
 import React from 'react'
 
+const BANNER = String.raw`
+ █████╗ ██╗     ███████╗ ██████╗    ███████╗██╗  ██╗ ██████╗ ██╗   ██╗
+██╔══██╗██║     ██╔════╝██╔════╝    ╚══███╔╝██║  ██║██╔═══██╗██║   ██║
+███████║██║     █████╗  ██║           ███╔╝ ███████║██║   ██║██║   ██║
+██╔══██║██║     ██╔══╝  ██║          ███╔╝  ██╔══██║██║   ██║██║   ██║
+██║  ██║███████╗███████╗╚██████╗    ███████╗██║  ██║╚██████╔╝╚██████╔╝
+╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝    ╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝`.slice(1)
+
 const Hero = () => {
   return (
     <section id="home" className="hero">
       <div className="hero-container">
         <div className="hero-content">
           <h1 className="hero-title">Alec Zhou</h1>
-          <h2 className="hero-subtitle">Computer Science & Mathematics Student</h2>
+          <pre className="hero-banner" aria-hidden="true">{BANNER}</pre>
+          <h2 className="hero-subtitle">
+            $ Computer Science & Mathematics Student<span className="cursor" aria-hidden="true">█</span>
+          </h2>
           <p className="hero-description">
             Full-stack developer and AI enthusiast pursuing Computer Science and Applied Mathematics at the University of Maryland. 
             Passionate about building innovative solutions and automating complex processes.
